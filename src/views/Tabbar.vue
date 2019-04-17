@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-view/>
+    <transition>
+      <router-view/>
+    </transition>
     <cube-tab-bar
       v-model="selectedLabelDefault"
       :data="tabs"
