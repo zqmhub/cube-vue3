@@ -1,6 +1,7 @@
 module.exports = {
   configureWebpack: {
     devServer: {
+      open: true, //自动启动浏览器
       //mock接口编写
       //更改后重启生效
       before(app) {
@@ -56,13 +57,144 @@ module.exports = {
               message: '登录成功',
               token: tokenKey + "-" + username + '-' + (new Date().getTime() + 60 * 60 * 1000)
             })
-          }else{
+          } else {
             res.json({
-              code:1,
-              message:'帐号或密码错误'
+              code: 1,
+              message: '帐号或密码错误'
             })
           }
         })
+        //轮播图
+        app.get('/api/navlist', (req, res) => {
+          res.json({
+            code: 0,
+            items: [{
+                url: "http://www.didichuxing.com/",
+                image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png"
+              },
+              {
+                url: "http://www.didichuxing.com/",
+                image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png"
+              },
+              {
+                url: "http://www.didichuxing.com/",
+                image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide03.png"
+              }
+            ]
+          })
+        })
+
+        //分类接口
+        app.get('/api/slideList', (req, res) => {
+          res.json({
+            code: 0,
+            items: [
+              [{
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类1'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类3'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类4'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类5'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png",
+                  name: '分类2'
+                },
+              ],
+              [{
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类1'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类3'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类4'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类5'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类2'
+                },
+                {
+                  url: "http://www.didichuxing.com/",
+                  image: "//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png",
+                  name: '分类2'
+                },
+              ]
+            ]
+          })
+        })
+
       }
     }
   },

@@ -1,18 +1,6 @@
 <template>
   <div class="home">
-    <cube-slide :data="items"/>
-    <cube-slide ref="slide" :data="lists" :auto-play="false">
-      <cube-slide-item v-for="(item, index) in lists" :key="index">
-        <ul>
-          <li class="slidelist" v-for="(list, index1) in item" :key="index1">
-            <a>
-              <img :src="list.image">
-              <p>{{list.name}}</p>
-            </a>
-          </li>
-        </ul>
-      </cube-slide-item>
-    </cube-slide>
+   cart
   </div>
 </template>
 

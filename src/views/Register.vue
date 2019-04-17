@@ -1,6 +1,7 @@
 <template>
   <div>
     <cube-form :model="model" :schema="schema" @submit="submitHandler"></cube-form>
+    <router-link to="/login">登录</router-link>
   </div>
 </template>
 
@@ -68,7 +69,7 @@ export default {
           params: this.model
         })
         .then(res => {
-          console.log(res.data.success);
+          console.log(res.success);
         })
         .catch(err => {
           console.log(err);

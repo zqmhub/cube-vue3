@@ -1,6 +1,7 @@
 <template>
   <div>
     <cube-form :model="model" :schema="schema" @submit="submitHandler"></cube-form>
+    <router-link to="./register">注册</router-link>
   </div>
 </template>
 
@@ -68,13 +69,14 @@ export default {
           params: this.model
         })
         .then(res => {
-          console.log(res.data.code + "-" + res.data);
-          console.log(res.data);
-          if (res.data.code == "0") {
-            this.$store.commit("setToken", res.data.token);
-            localStorage.setItem("token", res.data.token);
+          if (res.code == "0") {
+            this.$store.commit("setToken", res.token);
+            localStorage.setItem("token", res.token);
+            this.$router.replace({
+              path: "/tabbar"
+            });
           } else {
-            alert(res.data.message);
+            alert(res.message);
           }
         })
         .catch(err => {
