@@ -1,8 +1,9 @@
 <template>
   <div>
-    <transition>
-      <router-view/>
+    <transition :name="transitionName">
+      
     </transition>
+    <router-view class="router"></router-view>
     <cube-tab-bar
       v-model="selectedLabelDefault"
       :data="tabs"
@@ -16,6 +17,7 @@
 export default {
   data() {
     return {
+      transitionName: "slide-right",
       selectedLabelDefault: "首页",
       tabs: [
         {
@@ -40,6 +42,14 @@ export default {
         }
       ]
     };
+  },
+  watch: {
+    $route(to, from) {
+      //  console.log('现在路由:',to.path.split('/')[1],'来自路由:',from.path.split('/')[1],'现在的动画:',this.transitionName)
+      const toDepth = to.path.split("/").length;
+      const fromDepth = from.path.split("/").length;
+      this.transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
+    }
   },
   methods: {
     clickHandler(label) {
@@ -78,4 +88,21 @@ export default {
   width: 100%;
   bottom: 0;
 }
+.router {
+  position: absolute;
+  width: 100%;
+  transition: all 0.8s ease;
+}
+/* .silde-left-enter,
+.silde-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(300px, 0);
+  transform: translate(300px, 0);
+}
+.silde-right-enter,
+.silde-left-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(-300px, 0);
+  transform: translate(-300px, 0);
+} */
 </style>
